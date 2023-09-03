@@ -96,24 +96,28 @@ class _LoginViewState extends State<LoginView> {
                       child: const Text('Login'),
                     ),
                     ElevatedButton.icon(
-                        style: ElevatedButton.styleFrom(
-                          foregroundColor: Colors.black,
-                          backgroundColor: Colors.white,
-                          minimumSize: const Size(double.infinity, 50),
-                        ),
-                        icon: const FaIcon(
-                          FontAwesomeIcons.google,
-                          color: Colors.red,
-                        ),
-                        onPressed: () async {
-                          User? user = await signInWithGoogle();
-                          print(user);
-                          // if (user != null) {
-                          //   FirebaseDatabase database = FirebaseDatabase.instance;
-                          //   database.u
-                          // }
-                        },
-                        label: const Text('SignIn with Google')),
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.black,
+                        backgroundColor: Colors.white,
+                        minimumSize: const Size(double.infinity, 50),
+                      ),
+                      icon: const FaIcon(
+                        FontAwesomeIcons.google,
+                        color: Colors.red,
+                      ),
+                      onPressed: () async {
+                        User? user = await signInWithGoogle();
+                        print(user);
+                      },
+                      label: const Text('SignIn with Google'),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                            '/register/', (route) => false);
+                      },
+                      child: const Text('Not Registered yet? Register here'),
+                    )
                   ],
                 ),
               );

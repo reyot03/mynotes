@@ -96,28 +96,36 @@ class _RegisterViewState extends State<RegisterView> {
                       child: const Text('Register'),
                     ),
                     ElevatedButton.icon(
-                        style: ElevatedButton.styleFrom(
-                          foregroundColor: Colors.black,
-                          backgroundColor: Colors.white,
-                          minimumSize: const Size(double.infinity, 50),
-                        ),
-                        icon: const FaIcon(
-                          FontAwesomeIcons.google,
-                          color: Colors.red,
-                        ),
-                        onPressed: () async {
-                          User? user = await signInWithGoogle();
-                          if (user == null) {
-                            print("Something went wrong");
-                          } else {
-                            print(user);
-                          }
-                          // if (user != null) {
-                          //   FirebaseDatabase database = FirebaseDatabase.instance;
-                          //   database.u
-                          // }
-                        },
-                        label: const Text('SignIn with Google')),
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.black,
+                        backgroundColor: Colors.white,
+                        minimumSize: const Size(double.infinity, 50),
+                      ),
+                      icon: const FaIcon(
+                        FontAwesomeIcons.google,
+                        color: Colors.red,
+                      ),
+                      onPressed: () async {
+                        User? user = await signInWithGoogle();
+                        if (user == null) {
+                          print("Something went wrong");
+                        } else {
+                          print(user);
+                        }
+                        // if (user != null) {
+                        //   FirebaseDatabase database = FirebaseDatabase.instance;
+                        //   database.u
+                        // }
+                      },
+                      label: const Text('SignIn with Google'),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                            '/login/', (route) => false);
+                      },
+                      child: const Text('Already registered? Login here'),
+                    ),
                   ],
                 ),
               );
